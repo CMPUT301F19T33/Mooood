@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_profile_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2f2f2f"
-    android:orientation="vertical">
-
-
+    >
 
     <ImageButton
         android:id="@+id/activity_user_profile_bt_back"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="#FFFFFFFF"
@@ -25,8 +22,14 @@
 
     <ImageView
         android:id="@+id/activity_user_profile_iv_pic"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="199dp"
+        android:layout_height="213dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_person_outline_24px" />
 
     <TextView
@@ -40,6 +43,11 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_iv_pic" />
+
+
+
+
+
 
     <TextView
         android:id="@+id/activity_user_profile_tv_recent_mood"
@@ -55,8 +63,8 @@
 
     <ImageView
         android:id="@+id/activity_user_profileiv_recent"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,8 +111,11 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_time"
         app:strokeColor="#FFFFFF"
         app:strokeWidth="2dp" />
-</LinearLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>

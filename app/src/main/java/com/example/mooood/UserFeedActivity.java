@@ -59,7 +59,6 @@ public class UserFeedActivity extends AppCompatActivity {
     private MoodEventsAdapter postAdapter;
     private RecyclerTouchListener recyclerTouchListener;
 
-
     SearchView userSearchView;
     Button feedButton;
 
@@ -89,14 +88,11 @@ public class UserFeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_feed);
 
         Intent intent = getIntent();
-         accountName = intent.getStringExtra("accountKey");
+        accountName = intent.getStringExtra("accountKey");
         userId = findViewById(R.id.activity_user_feed_tv_id);
         userId.setText(accountName);
         documentReference = db.collection("MoodEvents").document(accountName);
         collectionReference = db.collection("MoodEvents").document(accountName).collection("MoodActivities");
-
-        userSearchView = findViewById(R.id.userSearchView);
-        userSearchView.setIconifiedByDefault(false);
 
         createPostBtnClickListener(accountName);
 
@@ -131,20 +127,20 @@ public class UserFeedActivity extends AppCompatActivity {
 
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
 
-                                String author = (String)documentSnapshot.getData().get("author");
-                                String date = (String)documentSnapshot.getData().get("date");
-                                String time = (String)documentSnapshot.getData().get("time");
-                                String emotionalState = (String)documentSnapshot.getData().get("emotionalState");
-                                String imageURl = (String)documentSnapshot.getData().get("imageUrl");
-                                String reason = (String)documentSnapshot.getData().get("reason");
-                                String socialSituation = (String)documentSnapshot.getData().get("socialSituation");
-                                String latitude = (String) documentSnapshot.getData().get("latitude");
-                                String longitude= (String) documentSnapshot.getData().get("longitude");
-                                String address = (String) documentSnapshot.getData().get("address") ;
-                                MoodEvent moodEvent = new MoodEvent(author, date, time, emotionalState, imageURl, reason, socialSituation,latitude,longitude,address);
-                                moodEvent.setDocumentId(documentSnapshot.getId());
+                            String author = (String)documentSnapshot.getData().get("author");
+                            String date = (String)documentSnapshot.getData().get("date");
+                            String time = (String)documentSnapshot.getData().get("time");
+                            String emotionalState = (String)documentSnapshot.getData().get("emotionalState");
+                            String imageURl = (String)documentSnapshot.getData().get("imageUrl");
+                            String reason = (String)documentSnapshot.getData().get("reason");
+                            String socialSituation = (String)documentSnapshot.getData().get("socialSituation");
+                            String latitude = (String) documentSnapshot.getData().get("latitude");
+                            String longitude= (String) documentSnapshot.getData().get("longitude");
+                            String address = (String) documentSnapshot.getData().get("address") ;
+                            MoodEvent moodEvent = new MoodEvent(author, date, time, emotionalState, imageURl, reason, socialSituation,latitude,longitude,address);
+                            moodEvent.setDocumentId(documentSnapshot.getId());
 
-                                postDataList.add(moodEvent); //add to data list
+                            postDataList.add(moodEvent); //add to data list
 
                         }
 
@@ -251,42 +247,42 @@ public class UserFeedActivity extends AppCompatActivity {
      * This is the SearchView that will filter through Database of the user for the Mood entered and display it
      */
     private void filterMood () {
+        userSearchView = findViewById(R.id.userSearchView);
 
+        userSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                textSubmitted=s.toUpperCase();
+                collectionReference
+                        .orderBy("timeStamp", Query.Direction.DESCENDING)
+                        .whereEqualTo("emotionalState", textSubmitted)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                postDataList.clear();
+                                for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
 
-            userSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String s) {
-                    textSubmitted=s.toUpperCase();
-                    collectionReference
-                            .orderBy("timeStamp", Query.Direction.DESCENDING)
-                            .whereEqualTo("emotionalState", textSubmitted)
-                            .get()
-                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    postDataList.clear();
-                                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                    String author = (String)documentSnapshot.getData().get("author");
+                                    String date = (String)documentSnapshot.getData().get("date");
+                                    String time = (String)documentSnapshot.getData().get("time");
+                                    String emotionalState = (String)documentSnapshot.getData().get("emotionalState");
+                                    String imageURl = (String)documentSnapshot.getData().get("imageUrl");
+                                    String reason = (String)documentSnapshot.getData().get("reason");
+                                    String socialSituation = (String)documentSnapshot.getData().get("socialSituation");
+                                    String latitude = (String) documentSnapshot.getData().get("latitude");
+                                    String longitude= (String) documentSnapshot.getData().get("longitude");
+                                    String address = (String) documentSnapshot.getData().get("address") ;
 
-                                        String author = (String)documentSnapshot.getData().get("author");
-                                        String date = (String)documentSnapshot.getData().get("date");
-                                        String time = (String)documentSnapshot.getData().get("time");
-                                        String emotionalState = (String)documentSnapshot.getData().get("emotionalState");
-                                        String imageURl = (String)documentSnapshot.getData().get("imageUrl");
-                                        String reason = (String)documentSnapshot.getData().get("reason");
-                                        String socialSituation = (String)documentSnapshot.getData().get("socialSituation");
-                                        String latitude = (String) documentSnapshot.getData().get("latitude");
-                                        String longitude= (String) documentSnapshot.getData().get("longitude");
-                                        String address = (String) documentSnapshot.getData().get("address") ;
+                                    MoodEvent moodEvent = new MoodEvent(author, date, time, emotionalState, imageURl, reason, socialSituation, latitude,longitude, address);
+                                    moodEvent.setDocumentId(documentSnapshot.getId());
 
-                                        MoodEvent moodEvent = new MoodEvent(author, date, time, emotionalState, imageURl, reason, socialSituation, latitude,longitude, address);
-                                        moodEvent.setDocumentId(documentSnapshot.getId());
-
-                                        postDataList.add(moodEvent); //add to data list
-                                    }
-                                    postAdapter.notifyDataSetChanged();
+                                    postDataList.add(moodEvent); //add to data list
+                                }
+                                postAdapter.notifyDataSetChanged();
                             }
                         });
-                    return false;
+                return false;
             }
 
             @Override
@@ -413,8 +409,5 @@ public class UserFeedActivity extends AppCompatActivity {
             }
         });
 
-    }
-    public ArrayList<MoodEvent> getPostDataList() {
-        return postDataList;
     }
 }
