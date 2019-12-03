@@ -37,13 +37,21 @@ public class UserProfile extends AppCompatActivity {
 
         userName.setText(author);
 
+        backToFeed();
+
+
     }
 
     /**
      * takes the user back to where they came from
      */
-    public void backToFeed(View view) {
-        finish();
+    public void backToFeed() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
 

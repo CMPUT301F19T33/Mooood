@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -53,8 +54,8 @@ public class UserFeedActivity extends AppCompatActivity {
     public static final String MOOD_EVENT = "Mood Event";
 
     //Declare the variables for reference later
-    RecyclerView postList;
-    ArrayList<MoodEvent> postDataList;
+    private RecyclerView postList;
+    private ArrayList<MoodEvent> postDataList;
 
     private MoodEventsAdapter postAdapter;
     private RecyclerTouchListener recyclerTouchListener;
@@ -62,10 +63,11 @@ public class UserFeedActivity extends AppCompatActivity {
     SearchView userSearchView;
     Button feedButton;
 
-    Date moodTimeStamp;
-    TextView userProfile;
 
-    ImageButton mapButton;
+    private Date moodTimeStamp;
+    private ImageView userProfile;
+
+    private ImageView mapButton;
 
 
     //Firebase setup!
@@ -87,9 +89,14 @@ public class UserFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_feed);
 
+        //connect to xml
+        userId = findViewById(R.id.username);
+
+        //get user
         Intent intent = getIntent();
         accountName = intent.getStringExtra("accountKey");
         userId = findViewById(R.id.activity_user_feed_tv_id);
+
         userId.setText(accountName);
         documentReference = db.collection("MoodEvents").document(accountName);
         collectionReference = db.collection("MoodEvents").document(accountName).collection("MoodActivities");
