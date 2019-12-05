@@ -376,7 +376,7 @@ public class EditEventActivity extends AppCompatActivity implements OnMapReadyCa
         dateAndTimeMood.setText(dateAndTimeText);
 
         //get the current date to set value for date and time pickers
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM/dd/yyyy h:mm a", Locale.getDefault());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd yyyy h:mm a", Locale.getDefault());
 
         try{
             Date dateAndTime = simpleDateFormat.parse(dateAndTimeText);
