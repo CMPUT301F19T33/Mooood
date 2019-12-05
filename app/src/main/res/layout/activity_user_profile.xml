@@ -23,88 +23,105 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/activity_user_profile_iv_pic"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:src="@drawable/ic_person_outline_24px" />
 
-    <TextView
-        android:id="@+id/activity_user_profile_tv_usernam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_iv_pic" />
-
-    <TextView
-        android:id="@+id/activity_user_profile_tv_recent_mood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/recent_mood"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_tv_usernam" />
-
-    <ImageView
-        android:id="@+id/activity_user_profileiv_recent"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_tv_recent_mood"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/activity_user_profile_tv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_user_profileiv_recent" />
-
-    <TextView
-        android:id="@+id/activity_user_profile_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_tv_date" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp">
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/activity_user_profile_bt_logout"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#00FFFFFF"
-        android:onClick="logout"
-        android:text="@string/logout"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:backgroundTint="#00FFFFFF"
-        app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_time"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="2dp" />
+        <ImageView
+            android:id="@+id/activity_user_profile_iv_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_person_outline_24px"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/activity_user_profile_tv_usernam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_iv_pic"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/activity_user_profile_tv_recent_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/recent_mood"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_tv_usernam"
+            android:layout_gravity="center_horizontal"/>
+
+        <ImageView
+            android:id="@+id/activity_user_profileiv_recent"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_tv_recent_mood"
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/activity_user_profile_tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profileiv_recent"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/activity_user_profile_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_tv_date"
+            android:layout_gravity="center_horizontal"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/activity_user_profile_bt_logout"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#00FFFFFF"
+            android:onClick="logout"
+            android:text="@string/logout"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:backgroundTint="#00FFFFFF"
+            app:layout_constraintTop_toBottomOf="@+id/activity_user_profile_time"
+            app:strokeColor="#FFFFFF"
+            app:strokeWidth="2dp"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
 </LinearLayout>
 

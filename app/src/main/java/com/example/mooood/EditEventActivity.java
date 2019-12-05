@@ -285,7 +285,7 @@ public class EditEventActivity extends AppCompatActivity implements OnMapReadyCa
      **/
     private void customSwipeMoodStyling(){
         moodRoster.setClipToPadding(false);
-        moodRoster.setPadding(250,0,250,0);
+        moodRoster.setPadding(150,0,150,0);
         moodRoster.setPageMargin(50);
     }
 

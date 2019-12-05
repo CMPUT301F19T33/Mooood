@@ -37,7 +37,7 @@ public class ShowEventActivity extends AppCompatActivity implements OnMapReadyCa
 
     private RelativeLayout fullscreenLayout;
     private String author, date ,time ,emotionalState ,socialSituation ,imageUrl ,reason ,latitude ,longitude ,locationAddress;
-    private TextView authorText, dateText, timeText, socialSituationText, reasonText;
+    private TextView authorText, dateText, timeText, socialSituationText, reasonText, addressText;
     private ImageView emoticon, imageReason;
     private LinearLayout backArrow, moreDetailsLayout, mapCont, socialSituationCont, reasonCont;
     private String edit;
@@ -191,6 +191,7 @@ public class ShowEventActivity extends AppCompatActivity implements OnMapReadyCa
         socialSituationText = findViewById(R.id.social_situation);
         imageReason = findViewById(R.id.image_reason);
         reasonText = findViewById(R.id.reason);
+        addressText = findViewById(R.id.address);
     }
 
     /**
@@ -205,9 +206,10 @@ public class ShowEventActivity extends AppCompatActivity implements OnMapReadyCa
         socialSituationText.setText(socialSituation);
         Picasso.get().load(imageUrl).into(imageReason);
         imageReason.setTag(imageUrl);
-        String reasonQuote =  "\" "  + reason + " \"";
+        String reasonQuote =  "\""  + reason + "\"";
         reasonText.setText(reasonQuote);
         reasonText.setTag(reason);
+        addressText.setText(locationAddress);
     }
 
     /**

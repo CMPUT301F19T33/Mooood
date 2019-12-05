@@ -197,6 +197,7 @@
 
                         <!--GPS address-->
                         <TextView
+                            android:id="@+id/address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
@@ -205,8 +206,7 @@
                             android:layout_marginLeft="35dp"
                             android:layout_marginBottom="40dp"
                             android:textAlignment="center"
-                            android:textColor="#fff"
-                            android:text="9156 153 St NW, Edmonton, AB T5R 1P6, Canada">
+                            android:textColor="#fff">
 
                         </TextView>
                     </LinearLayout>
