@@ -96,7 +96,7 @@ public class UserFeedActivity extends AppCompatActivity {
         collectionReference = db.collection("MoodEvents").document(accountName).collection("MoodActivities");
 
         userSearchView = findViewById(R.id.userSearchView);
-        userSearchView.setIconifiedByDefault(false);
+        userSearchView.setIconified(false);
 
         createPostBtnClickListener(accountName);
 
