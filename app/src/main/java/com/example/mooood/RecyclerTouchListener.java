@@ -1,5 +1,10 @@
 package com.example.mooood;
 
+//===========================================================================================
+//  DISCLAIMER: This is an API. None of these code was written by any members of CMPUT301F19T33
+//  Source Code: https://gist.github.com/velmurugan35/da48a2e9a0bdf65f618ac1d9cc7eddcd
+//===========================================================================================
+
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.app.Activity;

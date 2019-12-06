@@ -40,27 +40,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 /**
- * This test case is for
- *
- * US 01.01.01
- * As a participant, I want to add a mood event to my mood history, each event with the current date
- * and time, a required emotional state, optional reason, and optional social situation.
- *
- * US 01.03.01
- * As a participant, I want to view a given mood event and all its available details.
- *
- * US 02.01.01
- * As a participant, I want to express the reason why for a mood event using a brief textual
- * explanation (no more than 20 characters or 3 words).
- *
- * US 02.02.01
- * As a participant, I want to express the reason why for a mood event using a photograph.
- *
- * US 02.03.01
- * As a participant, I want to specify the social situation for a mood event to be one of: alone,
- * with one other person, with two to several people, or with a crowd.
- *
- */
+ * US 06.01.01
+ * As a participant, I want to optionally attach my current location to a mood event.
+ **/
 
 @RunWith(AndroidJUnit4.class)
 public class LocationTest {
@@ -93,10 +75,6 @@ public class LocationTest {
      * This creates a MoodEvent with all details filled out
      * Then checks if the MoodEvent is in the UserFeedActvity
      * and if ShowEventActivity displays all details
-     *
-     * Tackles:
-     *  - US 01.01.01
-     *  - US 01.03.01
      */
     @Test
     public void checkAdd(){
@@ -155,8 +133,9 @@ public class LocationTest {
 
         //TODO: I had to hack this because the onView method was not working.
         //click on first item
-        //onView(withId(R.id.posts_list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        solo.clickOnText("JUST NOW");
+        solo.scrollToTop();
+        onView(withId(R.id.posts_list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+//        solo.clickOnText("JUST NOW");
 
         //go to the ShowEventActivity of the choosen MoodEvent
         solo.waitForActivity(ShowEventActivity.class);

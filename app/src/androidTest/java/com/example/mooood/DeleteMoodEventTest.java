@@ -131,9 +131,10 @@ public class DeleteMoodEventTest{
         //should be redirected to UserFeedActivity
         solo.waitForActivity(UserFeedActivity.class);
         solo.assertCurrentActivity("Wrong Activity", UserFeedActivity.class);
-
         solo.sleep(5000);
+
         //click on first item
+        solo.scrollToTop();
         onView(withId(R.id.posts_list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
         //Make sure HAPPY was added

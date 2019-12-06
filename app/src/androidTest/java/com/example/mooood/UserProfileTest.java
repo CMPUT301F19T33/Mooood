@@ -24,6 +24,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * US 03.01.01
+ * As a user, I want a profile with a unique username.
+ */
 
 @RunWith(AndroidJUnit4.class)
 public class UserProfileTest {
@@ -161,14 +165,11 @@ public class UserProfileTest {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
 
-
                             String dbDate = (String) documentSnapshot.getData().get("date");
                             String dbTime = (String) documentSnapshot.getData().get("time");
 
                             assertEquals(userDate.getText().toString(),dbDate);
                             assertEquals(userTime.getText().toString(), dbTime);
-
-
 
                         }
 

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
@@ -31,6 +32,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.*;
 
@@ -96,7 +100,8 @@ public class FollowAndNotificationTest {
         solo.sendKey(KeyEvent.KEYCODE_ENTER);
 
         //Clicks on the moodEvent of the user Searched and clicks on the follow button to send them a request
-        solo.clickOnView(solo.getView(R.id.followListView));
+        solo.scrollToTop();
+        onView(withId(R.id.followListView)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         solo.waitForActivity(followerActivity.class);
         solo.clickOnView(solo.getView(R.id.follow_button));
 

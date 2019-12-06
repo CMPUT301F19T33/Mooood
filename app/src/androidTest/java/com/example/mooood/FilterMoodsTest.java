@@ -101,6 +101,7 @@ public class FilterMoodsTest {
        //==========================================================
        // After filter, happy should be on top!
        //==========================================================
+        solo.scrollToTop();
         onView(withId(R.id.posts_list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         solo.waitForActivity(ShowEventActivity.class);
 
